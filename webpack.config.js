@@ -153,7 +153,7 @@ function buildConfig({
       ],
     },
     output: {
-      filename: mode === 'development' ?`[name].js` : `enlarger.[hash].${new Date().toString()}.js`,
+      filename: mode === 'development' ?`[name].js` : `enlarger.[hash].js`,
       path: path.resolve(__dirname, "dist"),
       clean: true,
     },

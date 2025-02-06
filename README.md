@@ -1,158 +1,124 @@
-# Canva Apps SDK starter kit
+# Canva App Image Horizontal Flip Mini Program
 
-Welcome to the **Apps SDK starter kit** for Canva's app development platform. 🎉
+## Introduction
 
-This repo contains everything you need to get an app up and running in a matter of minutes, including a boilerplate project and lots of examples. The complete documentation for the platform is at [canva.dev/docs/apps](https://www.canva.dev/docs/apps/).
+This project is a mini program developed based on the Canva App, designed to provide users with the functionality to horizontally flip images. Users can easily select an image and perform a horizontal flip to meet various design needs.
+## Try it out
+[You can try it out here](https://www.canva.com/design/DAGeSRF8IBQ/xZC7AW-Cmtirp5nPDCvxyA/edit?ui=eyJFIjp7IkE_IjoiTiIsIlMiOiJBQUdlTnlYTG9nbyIsIlQiOjF9fQ)
+## Features
+- **Image Horizontal Flip**: Users can select an image and perform a horizontal flip operation.
+- **Real-time Preview**: The flipped effect can be previewed in real-time, allowing users to make adjustments as needed.
 
-**Note:** The starter kit and documentation assumes some experience with TypeScript and React.
+## Installation and Setup
 
 ## Requirements
 
 - Node.js `v18` or `v20.10.0`
 - npm `v9` or `v10`
 
-**Note:** To make sure you're running the correct version of Node.js, we recommend using a version manager, such as [nvm](https://github.com/nvm-sh/nvm#intro). The [.nvmrc](/.nvmrc) file in the root directory of this repo will ensure the correct version is used once you run `nvm install`.
+**Note:** To ensure you're running the correct version of Node.js, we recommend using a version manager such as [nvm](https://github.com/nvm-sh/nvm#intro). The [.nvmrc](https://chat.deepseek.com/.nvmrc) file in the root directory of this repository will ensure the correct version is used once you run `nvm install`.
 
-## Quick start
+## Quick Start
 
-```bash
-git clone git@github.com:canva-sdks/canva-apps-sdk-starter-kit.git
-cd canva-apps-sdk-starter-kit
+```
+git clone https://github.com/JefferyHcool/demo_for_canva.git
+cd demo_for_canva
 npm install
 ```
 
-## Using the boilerplate
+## Using the Boilerplate
 
-### Step 1: Start the local development server
+### Step 1: Start the Local Development Server
 
 The `src` directory contains the boilerplate of an app.
 
 To start the boilerplate's development server, run the following command:
 
-```bash
+```
 npm start
 ```
 
-The server becomes available at <http://localhost:8080>.
+The server will be available at [http://localhost:8080](http://localhost:8080/).
 
-The app's source code is in the `src/app.tsx` file.
+The app's source code is located in the `src/app.tsx` file.
 
-### Step 2: Preview the app
+### Step 2: Preview the App
 
-The local development server only exposes a JavaScript bundle, so you can't preview an app by visiting <http://localhost:8080>. You can only preview an app via the Canva editor.
+The local development server only exposes a JavaScript bundle, so you cannot preview the app by visiting [http://localhost:8080](http://localhost:8080/). You can only preview the app via the Canva editor.
 
-To preview an app:
+To preview the app:
 
 1. Create an app via the [Developer Portal](https://www.canva.com/developers/apps).
 2. Select **App source > Development URL**.
 3. In the **Development URL** field, enter the URL of the development server.
-4. Click **Preview**. This opens the Canva editor (and the app) in a new tab.
+4. Click **Preview**. This will open the Canva editor (and the app) in a new tab.
 5. Click **Open**. (This screen only appears when using an app for the first time.)
 
 The app will appear in the side panel.
 
 ### (Optional) Step 3: Enable Hot Module Replacement
 
-By default, every time you make a change to an app, you have to reload the entire app to see the results of those changes. If you enable [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) (HMR), changes will be reflected without a full reload, which significantly speeds up the development loop.
+By default, every time you make a change to the app, you must reload the entire app to see the results of those changes. If you enable [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) (HMR), changes will be reflected without a full reload, significantly speeding up the development process.
 
 **Note:** HMR does **not** work while running the development server in a Docker container.
 
 To enable HMR:
 
-1. Navigate to an app via the [Your apps](https://www.canva.com/developers/apps).
+1. Navigate to your app via the [Your apps](https://www.canva.com/developers/apps) page.
+
 2. Select **Configure your app**.
+
 3. Copy the value from the **App origin** field. This value is unique to each app and cannot be customized.
+
 4. In the starter kit's directory, open the `.env` file.
+
 5. Set the `CANVA_APP_ORIGIN` environment variable to the value copied from the **App origin** field:
 
-   ```bash
+   ```
    CANVA_APP_ORIGIN=# YOUR APP ORIGIN GOES HERE 
    ```
 
 6. Set the `CANVA_HMR_ENABLED` environment variable to `true`:
 
-   ```bash
+   ```
    CANVA_HMR_ENABLED=true
    ```
 
 7. Restart the local development server.
+
 8. Reload the app manually to ensure that HMR takes effect.
 
-<details>
-  <summary>Previewing apps in Safari</summary>
+<details> <summary>Previewing Apps in Safari</summary>
 
-  By default, the development server is not HTTPS-enabled. This is convenient, as there's no need for a security certificate, but it prevents apps from being previewed in Safari.
+By default, the development server is not HTTPS-enabled. This is convenient as there's no need for a security certificate, but it prevents apps from being previewed in Safari.
 
-  **Why Safari requires the development server to be HTTPS-enabled?**
+**Why Safari Requires the Development Server to be HTTPS-enabled?**
 
-  Canva itself is served via HTTPS and most browsers prevent HTTPS pages from loading scripts via non-HTTPS connections. Chrome and Firefox make exceptions for local servers, such as `localhost`, but Safari does not, so if you're using Safari, the development server must be HTTPS-enabled.
+Canva itself is served via HTTPS, and most browsers prevent HTTPS pages from loading scripts via non-HTTPS connections. Chrome and Firefox make exceptions for local servers, such as `localhost`, but Safari does not. Therefore, if you're using Safari, the development server must be HTTPS-enabled.
 
-  To learn more, see [Loading mixed-content resources](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#loading_mixed-content_resources).
+To learn more, see [Loading mixed-content resources](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#loading_mixed-content_resources).
 
-  To preview apps in Safari:
+To preview apps in Safari:
 
-  1. Start the development server with HTTPS enabled:
+```
+1. Start the development server with HTTPS enabled:
+```
 
-  ```bash
-  # Run the main app
-  npm start --use-https
+```
+# Run the main app
+npm start --use-https
 
-  # Run an example
-  npm start <example-name> --use-https
-  ```
+# Run an example
+npm start <example-name> --use-https
+```
 
-  2. Navigate to <https://localhost:8080>.
-  3. Bypass the invalid security certificate warning:
-    1. Click **Show details**.
-    2. Click **Visit website**.
-  4. In the Developer Portal, set the app's **Development URL** to <https://localhost:8080>.
+```
+2. Navigate to <https://localhost:8080>.
+3. Bypass the invalid security certificate warning:
+       1. Click **Show details**.
+              2. Click **Visit website**.
+4. In the Developer Portal, set the app's **Development URL** to <https://localhost:8080>.
+```
 
-  You need to bypass the invalid security certificate warning every time you start the local server. A similar warning will appear in other browsers (and will need to be bypassed) whenever HTTPS is enabled.
-</details>
+You will need to bypass the invalid security certificate warning every time you start the local server. A similar warning will appear in other browsers (and will need to be bypassed) whenever HTTPS is enabled.
 
-## Running an example's backend
-
-Some examples have a backend. This backend is defined in the example's `backend/server.ts` file, automatically starts when the `npm start` command is run, and becomes available at <http://localhost:3001>.
-
-To run examples that have a backend:
-
-1. Navigate to the [Your apps](https://www.canva.com/developers/apps) page.
-2. Copy the ID of an app from the **App ID** column in the apps table.
-3. In the starter kit's `.env` file, set `CANVA_APP_ID` to the ID of the app.
-
-   For example:
-
-   ```bash
-   CANVA_APP_ID=AABBccddeeff
-   CANVA_APP_ORIGIN=#
-   CANVA_BACKEND_PORT=3001
-   CANVA_FRONTEND_PORT=8080
-   CANVA_BACKEND_HOST=http://localhost:3001
-   CANVA_HMR_ENABLED=FALSE
-   ```
-
-4. Start the example:
-
-   ```bash
-   npm start fetch
-   ```
-
-The ID of the app must be explicitly defined because it's required to [send and verify HTTP requests](https://www.canva.dev/docs/apps/verifying-http-requests/). If you don't set up the ID in the `.env` file, an error will be thrown when attempting to run the example.
-
-## Customizing the backend host
-
-If your app has a backend, the URL of the server likely depends on whether it's a development or production build. For example, during development, the backend is probably running on a localhost URL, but once the app's in production, the backend needs to be exposed to the internet.
-
-To more easily customize the URL of the server:
-
-1. Open the `.env` file in the text editor of your choice.
-2. Set the `CANVA_BACKEND_HOST` environment variable to the URL of the server.
-3. When sending a request, use `BACKEND_HOST` as the base URL:
-
-   ```ts
-   const response = await fetch(`${BACKEND_HOST}/custom-route`);
-   ```
-
-   **Note:** `BACKEND_HOST` is a global constant that contains the value of the `CANVA_BACKEND_HOST` environment variable. The variable is made available to the app via webpack and does not need to be imported.
-
-4. Before bundling the app for production, update `CANVA_BACKEND_HOST` to point to the production backend.
